@@ -2,7 +2,7 @@
 
 Based on https://nvie.com/posts/a-successful-git-branching-model/ by [Vincent Driessen](https://nvie.com/about/) 
 
-This is derivative work and all copyrights remain at by the original author. All mistakes and confusion are proudly owned by us. 
+This is derivative work and all copyrights remain owned by the original author. All mistakes and confusion are proudly owned by us. 
 
 ## Overview
 
@@ -68,11 +68,15 @@ $ git checkout -b 1-document-git-branching-approach develop
 Switched to a new branch "1-document-git-branching-approach"
 ```
 
-### Create a Pull Request 
+### Create a Draft Pull Request 
 
-As early as possible commit the feature branch back to orgin and create a pull request to track progress.   
+As early as possible commit the feature branch back to orgin and create a pull request to track progress.   The automated integration tests are run on each update to the branch connected to the PR.  
 
-#### Incorporating a finished feature on develop 
+Continue to work on the feature with regular commits to track changes and make sure the automated integration tests are still passing. 
+
+### Incorporating a finished feature on develop 
+
+After the feature is finished, the draft PR is changed to a PR ready for review.  The developer requests one or more team members to review the PR. 
 
 Finished features may be merged into the `develop` branch to definitely add them to the upcoming release:
 
