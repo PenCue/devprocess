@@ -1,49 +1,22 @@
-<!-- please update the text as needed --> 
+# The PenCue Development Process Documentation	
 
-# The PenCue Repository Template. 	
+## **NOTE This a PUBLIC repository** - NO code or architecture documentation, just the development process. 
 
-This repo can be used as a template for new repositories.  use
-
-<!-- include client if client specific repo: * **Client:** Client name -->
-
-* **Slack Channel:** :[#dev](https://pencue.slack.com/archives/C01545N92F3)
 * [Requirements](#Requirements)
-* [Installation](#Installation)
-* [Usage](#Usage)
-* [Testing](#Testing)
 * [Deployment](#Deployment)
 * [Development Process](#development-process)
 
 ## Requirements
 
-- Python >3.8.2
-- pyenv
-- ...
-
-## Installation
-
-how to setup your development environment. 
-
-```
-pyenv local 3.8.3
-pyenv virtualenv repo_name
-pyenv activate repo_name
-pip3 install -r requirements.txt
-```
-
-## Usage 
-
-how to run use the code locally 
-
-```
-python runme.py -db local.sq3
-```
-
-and open listed url in browser, default login etc. 
+- No requirements but [Typora editor app](https://typora.io/) is excellent to edit markdown pages
 
 ## Deployment
 
-Code is deployed by following the [PenCue Release Process](https://github.com/pencue/devproc)
+The process is kept simple since there is no way to "preview" the site until it is published.  
+
+1. Create PR with updates
+2. Get the PR reviewed 
+3. Merge PR with "develop" branch to publish. 
 
 
 ## Development Process
