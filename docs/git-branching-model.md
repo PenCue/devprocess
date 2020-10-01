@@ -6,26 +6,43 @@ This is derivative work and all copyrights remain owned by the original author. 
 
 ## Overview
 
-![img](https://nvie.com/img/git-model@2x.png)
+![gitflow-model.src pencue.001](assets/gitflow-model.src pencue.001-1577797.png)
 
-## The main branches 
+## The Main branches 
 
-![img](https://nvie.com/img/main-branches@2x.png)
+At the core, the development model is greatly inspired by existing models out there. The central repo holds three main branches with an infinite lifetime:
 
-At the core, the development model is greatly inspired by existing models out there. The central repo holds two main branches with an infinite lifetime:
+- `DEV`  development
+- `INT` Integration 
+- `PRD`Production
 
-- `production`
-- `develop`
+#### DEV - Development
 
-We consider `origin/production` to be the main branch where the source code of `HEAD` always reflects a *production-ready* state. Parallel to the `production` branch, another branch exists called `develop`.
+**DEV** is the **main** and **default** branch where the source code of `HEAD` always reflects a *latest delivered development* state.  All other persistent branches (INT & PRD) follow DEV. 
 
-We consider `origin/develop` to be the main branch where the source code of `HEAD` always reflects a state with the latest delivered development changes for the next release. Some would call this the “integration branch”.  
+This is the only branch new changes and fixed should be merged into, with the rare expection of production *Hot Fixes*
 
-When the source code in the `develop` branch reaches a stable point and is ready to be released, all of the changes should be merged back into `production` somehow and then tagged with a release number. How this is done in detail will be discussed further on.
+#### INT - Integration
 
-Therefore, each time when changes are merged back into `production`, this is a new production release *by definition*. We tend to be very strict at this, so that theoretically, we could use a Git hook script to automatically build and roll-out our software to our production servers everytime there was a commit on `production`.
+The **INT** branch is the integration branch.  
 
-## Supporting branches 
+The **INT**  branch is used to 
+
+- production migration testing
+- test integration with other systems
+- integrated / cross functional acceptance testing
+- customer demo of new features
+- customer integration testing. 
+
+As stated above **INT** follows **DEV**. 
+
+#### PRD - Production
+
+The production Branch contains all production ready releases.  The head of the branch is the most current release available to customers.  Head minus three (3) is the oldest release potentially in use by any customer. In other words customers must be within 3 releases of the most current release. 
+
+## Issue branches 
+
+
 
 Next to the main branches `production` and `develop`, our development model uses a variety of supporting branches to aid parallel development between team members, ease tracking of features, prepare for production releases and to assist in quickly fixing live production problems. Unlike the main branches, these branches always have a limited life time, since they will be removed eventually.
 
@@ -41,7 +58,7 @@ By no means are these branches “special” from a technical perspective. The b
 
 ### Feature branches 
 
-![img](https://nvie.com/img/fb@2x.png)
+![gitflow-model.src pencue.002](assets/gitflow-model.src pencue.002-1577825.png)
 
 - May branch off from:
 
@@ -59,18 +76,46 @@ Feature branches (or sometimes called topic branches) are used to develop new fe
 
 ## Creating a feature branch 
 
-A feature branch is always associated with an open github issue. After the issue is opened and a number has been assigned. For example `1`
+A feature branch is always associated with an open github issue. 
+
+```shell
+$ gh issue create
+
+Creating issue in PenCue/devprocess
+
+? Choose a template Feature request
+? Title gh-cli-documentation-and-screenshots
+? Body <Received>
+? What's next? Add metadata
+? What would you like to add? Labels, Projects
+? Labels documentation
+? Projects DevOps Process
+? What's next? Submit
+https://github.com/PenCue/devprocess/issues/3
+
+```
+
+After the issue is opened and a number has been assigned. In this case `3`
 
 When starting work on a new feature, branch off from the `develop` branch.
 
-```
-$ git checkout -b 1-document-git-branching-approach develop
-Switched to a new branch "1-document-git-branching-approach"
+```shell
+$ git checkout -b 3-gh-cli-documentation-and-screenshots develop
+Switched to a new branch '3-gh-cli-documentation-and-screenshots'
 ```
 
 ### Create a Draft Pull Request 
 
 As early as possible commit the feature branch back to orgin and create a pull request to track progress.   The automated integration tests are run on each update to the branch connected to the PR.  
+
+```shell
+$ git add docs/github-cli.md
+$ git commit -m "Adding github cli snippets for doc"
+[3-gh-cli-documentation-and-screenshots 3f14e9e] Adding github cli snippets for doc
+$ git push --set-upstream origin 3-gh-cli-documentation-and-screenshots
+ * [new branch]      3-gh-cli-documentation-and-screenshots -> 3-gh-cli-documentation-and-screenshots
+Branch '3-gh-cli-documentation-and-screenshots' set up to track remote branch '3-gh-cli-documentation-and-screenshots' from 'origin'.
+```
 
 Continue to work on the feature with regular commits to track changes and make sure the automated integration tests are still passing. 
 

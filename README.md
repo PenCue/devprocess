@@ -21,7 +21,7 @@ The process is kept simple since there is no way to "preview" the site until it 
 
 ## Development Process
 
-The development process follows the [PenCue development process](https://github.com/pencue/devproc)
+The development process follows the [PenCue development process](https://github.com/pencue/devprocess)
 
 Here's a quick summary:
 
