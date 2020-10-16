@@ -1,0 +1,118 @@
+[
+	{
+		"name": "type: 🐛 bug",
+		"color": "e11d21",
+		"aliases": [
+			"bug"
+		]
+	},
+	{
+		"name": "type: 🐞 hotfix",
+		"color": "e11d21",
+		"aliases": [
+			"hot-fix",
+			"hotfix",
+			"hot fix"
+		]
+	},
+	{
+		"name": "type: 🆕 feature",
+		"color": "990000",
+		"aliases": [
+			"feature",
+			"feat"
+		]
+	},
+	{
+		"name": "type: 👷 refactor",
+		"color": "fbca04",
+		"aliases": [
+			"maintenance",
+			"refactor",
+			"testing",
+			"test"
+		]
+	},
+	{
+		"name": "type: 🖊 architecture",
+		"color": "009800",
+		"aliases": [
+			"architecture",
+			"adr",
+			"design"
+		]
+	},
+	{
+		"name": "type: :grey_question: question",
+		"color": "cc317c",
+		"aliases": [
+			"question"
+		]
+	},
+	{
+		"name": "type: 💬 discussion",
+		"color": "cc317c",
+		"aliases": [
+			"discussion"
+		]
+	},
+	{
+		"name": "type: 📓 documentation",
+		"color": "207de5",
+		"aliases": [
+			"documentation"
+		]
+	},
+	{
+		"name": "priority: low",
+		"color": "009800"
+	},
+	{
+		"name": "priority: medium",
+		"color": "fbca04"
+	},
+	{
+		"name": "priority: high",
+		"color": "eb6420"
+	},
+	{
+		"name": "priority: critical",
+		"color": "e11d21"
+	},
+	{
+		"name": "status: 🆕 new",
+		"color": "bfe5bf",
+		"aliases": [
+			"new"
+		]
+	},
+	{
+		"name": "status: 🐐 refined",
+		"color": "bfe5bf",
+		"aliases": [
+			"refined"
+		]
+	},
+	{
+		"name": "status: ❌ wontfix",
+		"color": "cccccc",
+		"aliases": [
+			"wontfix",
+			"wont-fix"
+		]
+	},
+	{
+		"name": "status: ♻ duplicate",
+		"color": "cccccc",
+		"aliases": [
+			"duplicate"
+		]
+	},
+	{
+		"name": "status: 💤 blocked",
+		"color": "990000",
+		"aliases": [
+			"blocked"
+		]
+	}
+]

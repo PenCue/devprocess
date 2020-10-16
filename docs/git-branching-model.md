@@ -1,82 +1,118 @@
 # PenCue Git Branching Model 
 
-Based on https://nvie.com/posts/a-successful-git-branching-model/ by [Vincent Driessen](https://nvie.com/about/) 
+## Requirements and principles
 
-This is derivative work and all copyrights remain owned by the original author. All mistakes and confusion are proudly owned by us. 
+##### Requirements:
+
+1. Continuous integration and deployment CI/CD of releases.  
+2. Breaking API changes are very rare. 
+3. Customers will stay on latest release. 
+   * unless there are breaking API changes in which case customer may remain on previous major release while verifying the API changes. 
+   * Breaking API changes should be rare after version v1.0.0
+4. No code changes in production or integration releases. 
+5. No direct commits in any of the main branches
+
+##### Principles
+
+1. there are 3 main branches:
+
+   1. Development (**dev**)
+   2. Integration (**int**)
+   3. Production (**main**)
+
+2. Features and fixes will only be added to the development branch via Pull Requests (PR)
+
+3. The Integration branch will be updated via PR from **dev** to **int**
+
+4. The Production branch will be updated via PR from **int** to **main**
+
+5. Use Semantic Versioning (https://semver.org/)
+
+6. Fix forward
+
+7. These principles are flexible and adjustable after consensus of the team working
+
+    
+
+   
 
 ## Overview
 
-![gitflow-model.src pencue.001](assets/gitflow-model.src pencue.001-1577797.png)
+![git-branching-model](assets/git-branching-model.svg)
 
 ## The Main branches 
 
-At the core, the development model is greatly inspired by existing models out there. The central repo holds three main branches with an infinite lifetime:
+#### Development : `dev` Branch
 
-- `DEV`  development
-- `INT` Integration 
-- `PRD`Production
+All new features and fixes are merged with the dev branch first via a PR.  The pull request "ready for review" triggers and automatic test suite and code review and requests code and result review by another team member. 
 
-#### DEV - Development
+###### Requirements for merging: 
 
-**DEV** is the **main** and **default** branch where the source code of `HEAD` always reflects a *latest delivered development* state.  All other persistent branches (INT & PRD) follow DEV. 
+- [ ] Automatic local integration/regression testing 
+- [ ] Automatic Code quality (lint, pep etc) 
+- [ ] Manual Review of code and test results for completeness and correctness against issue
 
-This is the only branch new changes and fixed should be merged into, with the rare expection of production *Hot Fixes*
+The scope of the review and code is to the repo itself, integration testing and review of integrated results is done in next step 
 
-#### INT - Integration
+#### Integration and Testing : `int` Branch
 
-The **INT** branch is the integration branch.  
+After the feature/fix has been merged into the dev branch (automatically) an Pull Request will be created to trigger the integration testing. After the requirements have been met and reviewed the code can be merged into **int**
 
-The **INT**  branch is used to 
+###### Requirements for merging:
 
-- production migration testing
-- test integration with other systems
-- integrated / cross functional acceptance testing
-- customer demo of new features
-- customer integration testing. 
+- [ ] Automatic integration testing with other branches and customer configurations. 
+- [ ] Pass vulnerability scan. 
+- [ ] Compare results with previous releases. 
+- [ ] Performance benchmarks
+- [ ] Monitoring completness. 
+- [ ] Randomized extra testing (manual testcases/fuzzing/chaosmonkey/pentest/rebuild from scratch)
 
-As stated above **INT** follows **DEV**. 
+The scope of integration testing is all representative customer configurations using if permitted customer (anonimized) production data and at as large a scale as feasible (production and larger)
 
-#### PRD - Production
+If the PR gets rejected it will be closed and process returns back to **dev** branch.  Any integration issues will be recorded in new issues.  
 
-The production Branch contains all production ready releases.  The head of the branch is the most current release available to customers.  Head minus three (3) is the oldest release potentially in use by any customer. In other words customers must be within 3 releases of the most current release. 
+Note:  cosmetic errors (typos) can be allowed but please record them in an (existing) issue. 
 
-## Issue branches 
+#### Production ready : `main` Branch
 
+When an release is ready for main, the code is production ready.  The focus of the final PR to **main** is external: documentation ready and readable, customer updated, etc. In general the PR should rarely be rejected at this late stage. It may result in new issues for the backlog. 
 
+###### Requirements for merging:
 
-Next to the main branches `production` and `develop`, our development model uses a variety of supporting branches to aid parallel development between team members, ease tracking of features, prepare for production releases and to assist in quickly fixing live production problems. Unlike the main branches, these branches always have a limited life time, since they will be removed eventually.
+- [ ] Documentation ready/understandable
+- [ ] Customer updated/tickets updated. 
+- [ ] last sanity check by team outsider. 
 
-The different types of branches we may use are:
+When the PR is merged it will trigger deploy to all customer and demo enviroments. 
 
-- Feature branches
-- Release branches
-- Hotfix branches
+If the PR is rejected it will be closed and process returns back to **dev**
 
-Each of these branches have a specific purpose and are bound to strict rules as to which branches may be their originating branch and which branches must be their merge targets. We will walk through them in a minute.
+## The Issue branches 
 
-By no means are these branches “special” from a technical perspective. The branch types are categorized by how we *use* them. They are of course plain old Git branches.
+All development work will be done in issue branches.  The issue branches can be deleted after the code has been merged. 
 
-### Feature branches 
+Each issue branch starts with creating an issue in the repo.  Create a branch of **dev** when ready to work on it. Use the naming convention from the table below
 
-![gitflow-model.src pencue.002](assets/gitflow-model.src pencue.002-1577825.png)
+| issue type | Branch name                                                  |
+| ---------- | ------------------------------------------------------------ |
+| feature    | **feat**/{issue#}_{lowercase\_issue\_with\_spaces\_replaced\_by\_underscores}<br />`feat/32_adding_new_gizmo` |
+| fix        | **fix**/{issue#}_{lowercase\_issue\_with\_spaces\_replaced\_by\_underscores}<br />`fix/42_api_slowdown_after_gizmo_introduction_in_32` |
+| major      | **major**/{issue#}_{lowercase\_issue\_with\_spaces\_replaced\_by\_underscores}<br />`major/56_api_change_from_rest_to_graphql` |
+| hot-fix    | **hot-fix**/{issue#}_{lowercase\_issue\_with\_spaces\_replaced\_by\_underscores}<br />`hot-fix/63_graphsql_gizmo_query_breaks_gizmo_factory` |
 
-- May branch off from:
+**Note:** the name of the branch is important since the start of the branch name will trigger the version increments automatically:
 
-  `develop`
+| issue type  | Version increment | before  | after   |
+| ----------- | ----------------- | ------- | ------- |
+| fix/hot-fix | vX.Y.Z+1          | v2.32.4 | v2.32.5 |
+| feature     | vX.Y+1.0          | v2.32.4 | v2.33.0 |
+| major       | vX+1.0.0          | v2.32.4 | v3.0.0  |
 
-- Must merge back into:
+## Development workflow 
 
-  `develop`
+#### Open issue 
 
-- Branch naming convention:
-
-  anything except `production`, `develop`, `release-*`, or `hotfix-*`
-
-Feature branches (or sometimes called topic branches) are used to develop new features for the upcoming or a distant future release. When starting development of a feature, the target release in which this feature will be incorporated may well be unknown at that point. The essence of a feature branch is that it exists as long as the feature is in development, but will eventually be merged back into `develop` (to definitely add the new feature to the upcoming release) or discarded (in case of a disappointing experiment).
-
-## Creating a feature branch 
-
-A feature branch is always associated with an open github issue. 
+On the command line :
 
 ```shell
 $ gh issue create
@@ -96,6 +132,8 @@ https://github.com/PenCue/devprocess/issues/3
 ```
 
 After the issue is opened and a number has been assigned. In this case `3`
+
+#### create branch
 
 When starting work on a new feature, branch off from the `develop` branch.
 
@@ -301,3 +339,13 @@ Deleted branch hotfix-1.2.1 (was abbe5d6).
 ```
 
 ## Summary 
+
+
+
+
+
+Note 
+
+Based on https://nvie.com/posts/a-successful-git-branching-model/ by [Vincent Driessen](https://nvie.com/about/) 
+
+This is derivative work and all copyrights remain owned by the original author. All mistakes and confusion are proudly owned by us. 
