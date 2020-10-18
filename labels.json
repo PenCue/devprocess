@@ -1,118 +1,144 @@
 [
 	{
-		"name": "type: 🐛 bug",
-		"color": "e11d21",
+		"name": "type: 🐛 fix",
+		"color": "90e0ef",
 		"aliases": [
 			"bug"
-		]
+		],
+		"description": "Fix an bug/error which doesn't affect the functionality. "
 	},
 	{
-		"name": "type: 🐞 hotfix",
-		"color": "e11d21",
+		"name": "type: 🐞 hot-fix",
+		"color": "48cae4",
 		"aliases": [
 			"hot-fix",
 			"hotfix",
 			"hot fix"
-		]
+		],
+		"description": "Urgent production fix for an bug/error which doesn't affect the functionality. "
 	},
 	{
-		"name": "type: 🆕 feature",
-		"color": "990000",
+		"name": "type: ✨ feature",
+		"color": "00b4d8",
 		"aliases": [
 			"feature",
 			"feat"
-		]
+		],
+		"description": "Add/update a functional or technical feature."
 	},
 	{
-		"name": "type: 👷 refactor",
-		"color": "fbca04",
+		"name": "type: 🛠  rework",
+		"color": "0096c7",
 		"aliases": [
 			"maintenance",
 			"refactor",
-			"testing",
+			"rework",
 			"test"
-		]
+		],
+		"description": "Fix an bug/error which resulted in functional errors. "
 	},
 	{
-		"name": "type: 🖊 architecture",
-		"color": "009800",
+		"name": "type: 🏎  performance",
+		"color": "0077b6",
 		"aliases": [
-			"architecture",
-			"adr",
-			"design"
-		]
+			"perf"
+		],
+		"description": "Changes to the code which improve the performance without functional  changes."
 	},
 	{
-		"name": "type: :grey_question: question",
-		"color": "cc317c",
+		"name": "type: ⚡ major",
+		"color": "023e8a",
 		"aliases": [
-			"question"
-		]
-	},
-	{
-		"name": "type: 💬 discussion",
-		"color": "cc317c",
-		"aliases": [
-			"discussion"
-		]
-	},
-	{
-		"name": "type: 📓 documentation",
-		"color": "207de5",
-		"aliases": [
-			"documentation"
-		]
+			"breaking change"
+		],
+		"description": "Code is an breaking change if it changes the API interface"
 	},
 	{
 		"name": "priority: low",
-		"color": "009800"
+		"color": "b9e769",
+		"description": ""
 	},
 	{
 		"name": "priority: medium",
-		"color": "fbca04"
+		"color": "efea5a",
+		"description": ""
 	},
 	{
 		"name": "priority: high",
-		"color": "eb6420"
+		"color": "f1c453",
+		"description": ""
 	},
 	{
 		"name": "priority: critical",
-		"color": "e11d21"
+		"color": "f29e4c",
+		"description": ""
 	},
 	{
-		"name": "status: 🆕 new",
-		"color": "bfe5bf",
+		"name": "status: 🆕  new",
+		"color": "95d5b2",
 		"aliases": [
 			"new"
-		]
+		],
+		"description": "issue is new but not refined or ready to work on. "
 	},
 	{
 		"name": "status: 🐐 refined",
-		"color": "bfe5bf",
+		"color": "74c69d",
 		"aliases": [
 			"refined"
-		]
+		],
+		"description": "Issue is refined and ready to work on."
 	},
 	{
-		"name": "status: ❌ wontfix",
-		"color": "cccccc",
+		"name": "status: 👷 in progress",
+		"color": "52b788",
+		"aliases": [
+			"working",
+			"grinding"
+		],
+		"description": "Issue is being worked on. branch created and if possible a draft PR"
+	},
+	{
+		"name": "status: 🚦 on-hold",
+		"color": "40916c",
+		"aliases": [
+			"pause",
+			"hold"
+		],
+		"description": "Issue has been put on hold due to other priorities. "
+	},
+	{
+		"name": "status: 🕵  ready",
+		"color": "D8F3DC",
+		"aliases": [
+			"ready",
+			"review"
+		],
+		"description": "issue is ready for review, PR is set to ready"
+	},
+	{
+		"name": "status: ❌  wontfix",
+		"color": "2d6a4f",
 		"aliases": [
 			"wontfix",
 			"wont-fix"
-		]
+		],
+		"description": "Issue won't be fixed or implemented and closed"
 	},
 	{
 		"name": "status: ♻ duplicate",
-		"color": "cccccc",
+		"color": "1b4332",
 		"aliases": [
 			"duplicate"
-		]
+		],
+		"description": "issue is a duplicate and closed"
 	},
 	{
-		"name": "status: 💤 blocked",
-		"color": "990000",
+		"name": "status: 🚧  blocked",
+		"color": "081c15",
 		"aliases": [
 			"blocked"
-		]
+		],
+		"description": "Issue needs to be worked on but blocked"
 	}
 ]

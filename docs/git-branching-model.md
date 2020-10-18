@@ -116,13 +116,13 @@ Each issue branch starts with creating an issue in the repo.
 
 We use the following issue types:
 
-| issue type      | Purpose                                                      | Version  increment |
-| --------------- | ------------------------------------------------------------ | ------------------ |
-| fix             | Fix an bug/error which doesn't affect the functionality.     | patch              |
-| rework          | Fix an bug/error which resulted in functional errors.  for example calculation errors are not as expected. These errors must be treated as special cases since it may require rework at the other side of the API. | minor              |
-| feature         | Add/update a functional or technical feature. This may include changes to improve integration at the other side of the API. | minor              |
-| performance     | Changes to the code which improve the performance without functional  changes.  If the functionality changes it is an feature or a breaking change. | minor              |
-| Breaking Change | Code is an breaking change if it changes the API interface or changes in functionality which require changes to the systems using the API.  <br />Note *that extra functionality is not an breaking change as long as the API and functionality doesn't change for the current systems.* | major              |
+| issue type                                                   | Purpose                                                      | Version  increment |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------ |
+| Fix/Bug<br />![type-fix-label](assets/type-fix-label.png)    | Fix an bug/error which doesn't affect the functionality.     | patch              |
+| Rework<br />![type-rework-label](assets/type-rework-label.png) | Fix an bug/error which resulted in functional errors.  for example calculation errors are not as expected. These errors must be treated as special cases since it may require rework at the other side of the API. | minor              |
+| Feature<br />![type-feature-label](assets/type-feature-label.png) | Add/update a functional or technical feature. This may include changes to improve integration at the other side of the API. | minor              |
+| Performance<br />![type-performance-label](assets/type-performance-label.png) | Changes to the code which improve the performance without functional  changes.  If the functionality changes it is an feature or a breaking change. | minor              |
+| Major Change<br />![type-major-change-label](assets/type-major-change-label.png) | Code is an breaking change if it changes the API interface or changes in functionality which require changes to the systems using the API.  <br />Note *that extra functionality is not an breaking change as long as the API and functionality doesn't change for the current systems.* | major              |
 
 Create a branch of **dev** when ready to work on the issue. Use the naming convention from the table below
 
@@ -173,9 +173,43 @@ The version tags have different suffixes based on the branch:
 
 **Note** codewise there is ***no*** difference between dev, int and main.  The existence of the tag indicates the status of the release. The branches are used to trigger different test suites and deployments. 
 
+### Issue status
+
+| Label                                                        | Description                                                  |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ![status-new-label](assets/status-new-label.png)             | issue is new but not refined or ready to work on.            |
+| ![status-refined-label](assets/status-refined-label.png)     | Issue is refined and ready to work on.                       |
+| ![status-in-progress-label](assets/status-in-progress-label.png) | Issue is being worked on. branch created and if possible a draft PR |
+| ![status-on-hold-label](assets/status-on-hold-label.png)     | Issue has been put on hold due to other priorities.          |
+| ![status-ready-label](assets/status-ready-label.png)         | issue is ready for review, PR is set to ready                |
+| ![status-wonfix-label](assets/status-wonfix-label.png)       | Issue won't be fixed or implemented and closed               |
+| ![status-duplicate-label](assets/status-duplicate-label.png) | issue is a duplicate and closed                              |
+| ![status-blocked-label](assets/status-blocked-label.png)     | Issue needs to be worked on but blocked                      |
+
+### Priority definitions
+
+
+
+
+
 ## Development workflow 
 
-#### Open issue 
+#### Open an issue. 
+
+Open an issue in the repository most relevant to the issue; ie in which you expect the bulk of the work to be done.  
+
+Issues should be opened as soon as the issue is raised.  this may be some time before work on it commences.  
+
+The issues can be opened on the command line or via the browser the https://github.com/org/repo/issues/ 
+
+| Field     | Description                                                  | Example                                              |
+| --------- | ------------------------------------------------------------ | ---------------------------------------------------- |
+| **Title** | A short descriptive title for the issue <br />starting with *feat*/*fix*/*rework* etc<br />It should give your team member an idea <br />the issue is about | `feat/add-gizmo-factory`                             |
+| **Body**  | Use the feature or bug template as a guide.  <br />leave the headers and clean up the boilerplate text |                                                      |
+| Labels    | *Type*: label with feature/fix etc/ <br />*Status*: status of the issue (see above)<br />Priority: Priority of issue (see above) | ![type-feature-label](assets/type-feature-label.png) |
+|           |                                                              |                                                      |
+
+ 
 
 On the command line :
 
@@ -198,7 +232,7 @@ https://github.com/PenCue/devprocess/issues/3
 
 After the issue is opened and a number has been assigned. In this case `3`
 
-#### create branch
+#### create feature branch
 
 When starting work on a new feature, branch off from the `develop` branch.
 
