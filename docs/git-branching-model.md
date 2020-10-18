@@ -4,13 +4,28 @@
 
 ##### Requirements:
 
-1. Continuous integration and deployment CI/CD of releases.  
-2. Breaking API changes are very rare. 
-3. Customers will stay on latest release. 
+1. The main delivery model of is an SAAS service with an API interface. 
+
+   1. no shipping of code
+
+   2. each customer gets its own instance*. 
+
+      1. simplifies data ownership and integration with landscape. 
+
+      [^*]: We still call it SAAS
+
+2. Continuous integration and deployment CI/CD of releases.  
+
+3. Breaking API changes are very rare. 
+
+4. Customers will stay on latest release. 
+
    * unless there are breaking API changes in which case customer may remain on previous major release while verifying the API changes. 
    * Breaking API changes should be rare after version v1.0.0
-4. No code changes in production or integration releases. 
-5. No direct commits in any of the main branches
+
+5. No code changes in production or integration releases. 
+
+6. No direct commits in any of the main branches
 
 ##### Principles
 
@@ -27,6 +42,10 @@
 4. The Production branch will be updated via PR from **int** to **main**
 
 5. Use Semantic Versioning (https://semver.org/)
+
+   1. Major only updated on breaking API changes. We expect to be on v1 for a long time.
+   2. Minor for features/rework/substantial performance upgrades
+   3. Patch for bugs/non functionals/minor performance fixes
 
 6. Fix forward
 
@@ -54,6 +73,8 @@ All new features and fixes are merged with the dev branch first via a PR.  The p
 
 The scope of the review and code is to the repo itself, integration testing and review of integrated results is done in next step 
 
+**note** that the impact of the feature and fix will require different ways of reviewing the merge request.  See below **TODO review guidelines for patch,rework,feature,performance,and breaking changes**
+
 #### Integration and Testing : `int` Branch
 
 After the feature/fix has been merged into the dev branch (automatically) an Pull Request will be created to trigger the integration testing. After the requirements have been met and reviewed the code can be merged into **int**
@@ -69,7 +90,7 @@ After the feature/fix has been merged into the dev branch (automatically) an Pul
 
 The scope of integration testing is all representative customer configurations using if permitted customer (anonimized) production data and at as large a scale as feasible (production and larger)
 
-If the PR gets rejected it will be closed and process returns back to **dev** branch.  Any integration issues will be recorded in new issues.  
+If the PR gets rejected it will be closed and process returns back to **dev** branch.  Any integration issues will be recorded as new issues.  
 
 Note:  cosmetic errors (typos) can be allowed but please record them in an (existing) issue. 
 
@@ -91,22 +112,66 @@ If the PR is rejected it will be closed and process returns back to **dev**
 
 All development work will be done in issue branches.  The issue branches can be deleted after the code has been merged. 
 
-Each issue branch starts with creating an issue in the repo.  Create a branch of **dev** when ready to work on it. Use the naming convention from the table below
+Each issue branch starts with creating an issue in the repo.  
 
-| issue type | Branch name                                                  |
-| ---------- | ------------------------------------------------------------ |
-| feature    | **feat**/{issue#}_{lowercase\_issue\_with\_spaces\_replaced\_by\_underscores}<br />`feat/32_adding_new_gizmo` |
-| fix        | **fix**/{issue#}_{lowercase\_issue\_with\_spaces\_replaced\_by\_underscores}<br />`fix/42_api_slowdown_after_gizmo_introduction_in_32` |
-| major      | **major**/{issue#}_{lowercase\_issue\_with\_spaces\_replaced\_by\_underscores}<br />`major/56_api_change_from_rest_to_graphql` |
-| hot-fix    | **hot-fix**/{issue#}_{lowercase\_issue\_with\_spaces\_replaced\_by\_underscores}<br />`hot-fix/63_graphsql_gizmo_query_breaks_gizmo_factory` |
+We use the following issue types:
 
-**Note:** the name of the branch is important since the start of the branch name will trigger the version increments automatically:
+| issue type      | Purpose                                                      | Version  increment |
+| --------------- | ------------------------------------------------------------ | ------------------ |
+| fix             | Fix an bug/error which doesn't affect the functionality.     | patch              |
+| rework          | Fix an bug/error which resulted in functional errors.  for example calculation errors are not as expected. These errors must be treated as special cases since it may require rework at the other side of the API. | minor              |
+| feature         | Add/update a functional or technical feature. This may include changes to improve integration at the other side of the API. | minor              |
+| performance     | Changes to the code which improve the performance without functional  changes.  If the functionality changes it is an feature or a breaking change. | minor              |
+| Breaking Change | Code is an breaking change if it changes the API interface or changes in functionality which require changes to the systems using the API.  <br />Note *that extra functionality is not an breaking change as long as the API and functionality doesn't change for the current systems.* | major              |
+
+Create a branch of **dev** when ready to work on the issue. Use the naming convention from the table below
+
+| issue type  | Branch name                                                  |
+| ----------- | ------------------------------------------------------------ |
+| fix         | **fix**/{issue#}_{lowercase\_issue\_with\_spaces\_replaced\_by\_underscores}<br />`fix/42_api_slowdown_after_gizmo_introduction_in_32` |
+| rework      | **rework**/{issue#}_{lowercase\_issue\_with\_spaces\_replaced\_by\_underscores}<br />`rework/43_gizmo_returns_dunno_instead_of_42_in_some_cases` |
+| feature     | **feat**/{issue#}_{lowercase\_issue\_with\_spaces\_replaced\_by\_underscores}<br />`feat/32_adding_new_gizmo` |
+| Performance | **perf**/{issue#}_{lowercase\_issue\_with\_spaces\_replaced\_by\_underscores}<br />`perf/53_rewrote_complete_object_def` |
+| major       | **major**/{issue#}_{lowercase\_issue\_with\_spaces\_replaced\_by\_underscores}<br />`major/56_api_change_from_rest_to_graphql` |
+| hot-fix     | **hot-fix**/{issue#}_{lowercase\_issue\_with\_spaces\_replaced\_by\_underscores}<br />`hot-fix/63_graphsql_gizmo_query_breaks_gizmo_factory` |
+
+#### Version increments (bumps)
+
+We use semver versioning for the API and internal code.   We increment according the followinr rules:
 
 | issue type  | Version increment | before  | after   |
 | ----------- | ----------------- | ------- | ------- |
 | fix/hot-fix | vX.Y.Z+1          | v2.32.4 | v2.32.5 |
 | feature     | vX.Y+1.0          | v2.32.4 | v2.33.0 |
 | major       | vX+1.0.0          | v2.32.4 | v3.0.0  |
+
+**Note:** the name of the branch is important since the start of the branch name will trigger the version increments automatically.
+
+**Note**: the version number is set right **after** the merge into ***dev*** by an CI action.  So until the branch is merged it doesn't know its version number. () **TO DO** automatically create  change log with version number after merge.  this may be tricky because dev branch doesn't allow direct commits and a PR would trigger version bump. )
+
+|
+|
+|
+
+#### Release tagging
+
+Feature branches are not tagged.  All the main branches are tagged using the version number.  The head of each branch has 3 tags:
+
+| Tag    | Purpose                                                      | Changes                       |
+| ------ | ------------------------------------------------------------ | ----------------------------- |
+| vX.Y.Z | Unique identifier for the version                            | no                            |
+| vX.Y   | points to the latest patch release within a feature release.  Mainly here for completeness. the use case is limited. | at every patch within feature |
+| vX     | points to the latest feature and patch release within a major release train. | at every patch and feature    |
+
+The version tags have different suffixes based on the branch: 
+
+| branch | tag                    | example          |
+| ------ | ---------------------- | ---------------- |
+| dev    | unstable               | v2.36.7.unstable |
+| int    | rc (release candidate) | v2.36.7.rc       |
+| main   | *no tag*               | v2.36.7          |
+
+**Note** codewise there is ***no*** difference between dev, int and main.  The existence of the tag indicates the status of the release. The branches are used to trigger different test suites and deployments. 
 
 ## Development workflow 
 
