@@ -10,11 +10,9 @@
 
    1. no shipping of code
 
-   2. each customer gets its own instance*. 
+   2. each customer gets its own instance. 
 
-      1. simplifies data ownership and integration with landscape. 
-
-      [^*]: We still call it SAAS
+      1. simplifies data ownership and integration with customer landscape. 
 
 2. Continuous integration and deployment CI/CD of releases.  
 
@@ -147,11 +145,7 @@ We use semver versioning for the API and internal code.   We increment according
 
 **Note:** the name of the branch is important since the start of the branch name will trigger the version increments automatically.
 
-**Note**: the version number is set right **after** the merge into ***dev*** by an CI action.  So until the branch is merged it doesn't know its version number. () **TO DO** automatically create  change log with version number after merge.  this may be tricky because dev branch doesn't allow direct commits and a PR would trigger version bump. )
-
-|
-|
-|
+**Note**: the version number is set right **after** the merge into ***dev*** by an CI action.  So until the branch is merged it doesn't know its version number. ( **TO DO** automatically create  change log with version number after merge.  this may be tricky because dev branch doesn't allow direct commits and a PR would trigger version bump. )
 
 ### Release tagging
 
@@ -252,7 +246,7 @@ After the issue is opened and a number has been assigned. In this case `3`
 
 ### Create feature branch
 
-When starting work on a new feature, branch off from the `develop` branch.
+When starting work on a new feature, branch off from the `dev` branch.
 
 ```shell
 $ git checkout -b 3-gh-cli-documentation-and-screenshots develop
