@@ -1,9 +1,6 @@
 [{
   "repositories": [
-    "PenCue/_repo_template_",
-    "PenCue/timber_core",
-    "PenCue/timber_azure",
-    "PenCue/timber_schema"
+    "PenCue/devprocess"
 ],
   "milestones": [{
     "title": "Sprint 1",
