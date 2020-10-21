@@ -75,7 +75,7 @@ if [[ $? -eq 0 ]] ; then
     if [[ $? -eq 0 ]] ; then 
         log_info "successfully finished setting milestones"
         log_info "setting labels for $REPO"    
-        $NOP github-label-sync -a 4941cfccb61ff1b671c0d048f6ba6ca94d24b7ec -l ./labels.json $REPO
+        $NOP github-label-sync -a $GITHUB_ACCESSTOKEN -l ./labels.json $REPO
         if [[ $? -eq 0 ]] ; then 
             log_info "successfully finished setting milestones"
         else 
