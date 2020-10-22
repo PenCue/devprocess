@@ -244,6 +244,10 @@ https://github.com/PenCue/devprocess/issues/3
 
 ```
 
+
+
+![gh-issue-create](assets/gh-issue-create.svg)
+
 After the issue is opened and a number has been assigned. In this example **3**
 
 ### Create feature branch
