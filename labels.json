@@ -18,6 +18,14 @@
 		"description": "Urgent production fix for an bug/error which doesn't affect the functionality. "
 	},
 	{
+		"name": "type: 🏗 patch",
+		"color": "03045e",
+		"aliases": [
+			"patch",
+			"featurette"
+		],
+		"description": "Updates which don't change available functionality but are required for upcoming features. "
+	},{
 		"name": "type: ✨ feature",
 		"color": "00b4d8",
 		"aliases": [

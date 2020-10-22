@@ -4,7 +4,7 @@
 ],
   "milestones": [{
     "title": "Sprint 1",
-    "state": "open",
+    "state": "closed",
     "description": "Lets get this show on the road ™",
     "due_on": "2020-10-19T23:59:59Z"
   },

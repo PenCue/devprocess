@@ -8,7 +8,8 @@ MILESTONESFILE="milestones.json"
 LABELSFILE="labels.json"
 REPO=${1-}
 GITHUB_ACCESSTOKEN=${GITHUB_ACCESSTOKEN-}
-
+GITHUB_LABEL_SYNC=github-label-sync
+GITHUB_SYNC_LABELS_MILESTONES=github-sync-labels-milestones
 # default TERM to xterm-256color to
 TERM=${TERM-"xterm-256color"}
 export TERM
@@ -47,6 +48,20 @@ function log_debug {
 
 log_warn "QUICK_HACK_SCRIPT to set labels and milestones for a given repo"
 log_warn "NOTE very limited error checking.  use only if you understand the script"
+log_warn "This script will DELETE existing labels and milestones"
+
+$($GITHUB_SYNC_LABELS_MILESTONES -V &>2) 
+if [[ $? -ne 0 ]] ;then
+    log_error "external prog $GITHUB_SYNC_LABELS_MILESTONES is missing"
+    log_info "install via npm install -g github-sync-labels-milestones"
+    exit 3
+fi 
+$($GITHUB_LABEL_SYNC -V &>2) 
+if [[ $? -ne 0 ]] ;then
+    log_error "external prog $GITHUB_LABEL_SYNC is missing"
+    log_info "install via npm install -g github-label-sync"
+    exit 3
+fi 
 
 if [[ -z "$GITHUB_ACCESSTOKEN" ]] ; then
     log_error "GITHUB_ACCESSTOKEN is missing from env, bailing"

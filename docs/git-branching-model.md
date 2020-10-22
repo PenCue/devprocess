@@ -117,6 +117,7 @@ We use the following issue types:
 | issue type                                                   | Purpose                                                      | Version  increment |
 | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------ |
 | Fix/Bug<br />![type-fix-label](assets/type-fix-label.png)    | Fix an bug/error which doesn't affect the functionality.     | patch              |
+| Patch<br />![type-patch-label](assets/type-patch-label.png)  | Code additions which don't change available functionality but are required for upcoming features. | patch              |
 | Rework<br />![type-rework-label](assets/type-rework-label.png) | Fix an bug/error which resulted in functional errors.  for example calculation errors are not as expected. These errors must be treated as special cases since it may require rework at the other side of the API. | minor              |
 | Feature<br />![type-feature-label](assets/type-feature-label.png) | Add/update a functional or technical feature. This may include changes to improve integration at the other side of the API. | minor              |
 | Performance<br />![type-performance-label](assets/type-performance-label.png) | Changes to the code which improve the performance without functional  changes.  If the functionality changes it is an feature or a breaking change. | minor              |
@@ -126,12 +127,13 @@ Create a branch of **dev** when ready to work on the issue. Use the naming conve
 
 | issue type  | Branch name                                                  |
 | ----------- | ------------------------------------------------------------ |
-| fix         | **fix**/{issue#}_{lowercase\_issue\_with\_spaces\_replaced\_by\_underscores}<br />`fix/42_api_slowdown_after_gizmo_introduction_in_32` |
-| rework      | **rework**/{issue#}_{lowercase\_issue\_with\_spaces\_replaced\_by\_underscores}<br />`rework/43_gizmo_returns_dunno_instead_of_42_in_some_cases` |
-| feature     | **feat**/{issue#}_{lowercase\_issue\_with\_spaces\_replaced\_by\_underscores}<br />`feat/32_adding_new_gizmo` |
-| Performance | **perf**/{issue#}_{lowercase\_issue\_with\_spaces\_replaced\_by\_underscores}<br />`perf/53_rewrote_complete_object_def` |
-| major       | **major**/{issue#}_{lowercase\_issue\_with\_spaces\_replaced\_by\_underscores}<br />`major/56_api_change_from_rest_to_graphql` |
-| hot-fix     | **hot-fix**/{issue#}_{lowercase\_issue\_with\_spaces\_replaced\_by\_underscores}<br />`hot-fix/63_graphsql_gizmo_query_breaks_gizmo_factory` |
+| fix         | **fix**/{issue#}\_lowecase\_pr_description<br />`fix/42_api_slowdown_after_gizmo_introduction_in_32` |
+| patch       | **patch**/{issue#}\_lowecase\_pr_description<br />`patch/32_adding_testing_fixtures_for_gizmo |
+| rework      | **rework**/{issue#}\_lowecase\_pr_description<br />`rework/43_gizmo_returns_dunno_instead_of_42_in_some_cases` |
+| feature     | **feat**/{issue#}\_lowecase\_pr_description<br />`feat/32_adding_new_gizmo` |
+| Performance | **perf**/{issue#}\_lowecase\_pr_description<br />`perf/53_rewrote_complete_object_def` |
+| major       | **major**/{issue#}\_lowecase\_pr_description<br />`major/56_api_change_from_rest_to_graphql` |
+| hot-fix     | **hot-fix**/{issue#}\_lowecase\_pr_description<br />`hot-fix/63_graphsql_gizmo_query_breaks_gizmo_factory` |
 
 ### Version increments (bumps)
 
@@ -199,9 +201,9 @@ Issues may be reassigned priorities over time: an medium priority issue may be u
 
 An issue represents a complete unit of work: feature, bug, performance improvement etc.  
 
-*An issue should be sized to be completed in a single sprint.*  
+***An issue should be sized to be completed in a single sprint.***  
 
-But we don't want 1 massive merge at the end of the sprint so the issue needs to be split up in smaller chunks: 1 or 2 days of work. We use pull requests as the way to split up an issue in manageable chuncks.  During refinement of the issue 
+But we don't want 1 massive merge at the end of the sprint so the issue needs to be split up in smaller chunks: 1 or 2 days of work. We use pull requests as the way to split up an issue in manageable chuncks.  During refinement of the issue we make a sketch of the expected PRs. 
 
 ## Development workflow 
 
@@ -242,20 +244,20 @@ https://github.com/PenCue/devprocess/issues/3
 
 ```
 
-After the issue is opened and a number has been assigned. In this case `3`
+After the issue is opened and a number has been assigned. In this example **3**
 
 ### Create feature branch
 
 When starting work on a new feature, branch off from the `dev` branch.
 
 ```shell
-$ git checkout -b 3-gh-cli-documentation-and-screenshots develop
-Switched to a new branch '3-gh-cli-documentation-and-screenshots'
+$ git checkout -b feat/3-gh-cli-documentation-and-screenshots dev
+Switched to a new branch 'feat/3-gh-cli-documentation-and-screenshots'
 ```
 
-### Create a Draft Pull Request 
+As early as possible commit the feature branch back to orgin and create a pull request to track progress.   
 
-As early as possible commit the feature branch back to orgin and create a pull request to track progress.   The automated integration tests are run on each update to the branch connected to the PR.  
+The automated tests are run on each commit to the branch connected to the PR.  
 
 ```shell
 $ git add docs/github-cli.md
@@ -265,6 +267,10 @@ $ git push --set-upstream origin 3-gh-cli-documentation-and-screenshots
  * [new branch]      3-gh-cli-documentation-and-screenshots -> 3-gh-cli-documentation-and-screenshots
 Branch '3-gh-cli-documentation-and-screenshots' set up to track remote branch '3-gh-cli-documentation-and-screenshots' from 'origin'.
 ```
+
+### Create a Draft Pull Request 
+
+
 
 Continue to work on the feature with regular commits to track changes and make sure the automated integration tests are still passing. 
 
