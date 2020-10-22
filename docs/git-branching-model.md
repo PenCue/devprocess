@@ -1,4 +1,4 @@
-# PenCue Git Branching Model 
+PenCue Git Branching Model 
 
 [TOC]
 
@@ -209,7 +209,7 @@ But we don't want 1 massive merge at the end of the sprint so the issue needs to
 
 ### Open an issue. 
 
-Open an issue in the repository most relevant to the issue; ie in which you expect the bulk of the work to be done.  
+Open an issue in the **repository** most relevant to the issue; ie in which you expect the bulk of the work to be done.  
 
 Issues should be opened as soon as the issue is raised.  this may be some time before work on it commences.  
 
@@ -223,32 +223,11 @@ The issues can be opened on the command line or via the browser the https://gith
 | **Project** | Assign the issue to the project board for the repo           | Timber                                                       |
 | Milestone   | If known assign the milestone the issue should be completed by. | *sprint 6 - are we having fun yet? :tm:*                     |
 
+:high_brightness: Use [github cli](https://cli.github.com/) to create issues and pr from the command line: `gh issue create` and `gh pr create`
+
+Note the number of the issue after creation. We assume **3** for the following examples
 
 
-#### Issue creation on the command line 
-
-```shell
-$ gh issue create
-
-Creating issue in PenCue/devprocess
-
-? Choose a template Feature request
-? Title gh-cli-documentation-and-screenshots
-? Body <Received>
-? What's next? Add metadata
-? What would you like to add? Labels, Projects
-? Labels documentation
-? Projects DevOps Process
-? What's next? Submit
-https://github.com/PenCue/devprocess/issues/3
-
-```
-
-
-
-![gh-issue-create](assets/gh-issue-create.svg)
-
-After the issue is opened and a number has been assigned. In this example **3**
 
 ### Create feature branch
 
@@ -259,33 +238,158 @@ $ git checkout -b feat/3-gh-cli-documentation-and-screenshots dev
 Switched to a new branch 'feat/3-gh-cli-documentation-and-screenshots'
 ```
 
-As early as possible commit the feature branch back to orgin and create a pull request to track progress.   
+###### As early as possible commit the feature branch back to orgin and create a pull request to track progress.   
 
 The automated tests are run on each commit to the branch connected to the PR.  
+
+First commit: 
 
 ```shell
 $ git add docs/github-cli.md
 $ git commit -m "Adding github cli snippets for doc"
-[3-gh-cli-documentation-and-screenshots 3f14e9e] Adding github cli snippets for doc
-$ git push --set-upstream origin 3-gh-cli-documentation-and-screenshots
- * [new branch]      3-gh-cli-documentation-and-screenshots -> 3-gh-cli-documentation-and-screenshots
-Branch '3-gh-cli-documentation-and-screenshots' set up to track remote branch '3-gh-cli-documentation-and-screenshots' from 'origin'.
+[feat/3-gh-cli-documentation-and-screenshots 3f14e9e] Adding github cli snippets for doc
+$ git push --set-upstream origin feat/3-gh-cli-documentation-and-screenshots
+ * [new branch]      feat/3-gh-cli-documentation-and-screenshots -> feat/3-gh-cli-documentation-and-screenshots
+Branch 'feat/3-gh-cli-documentation-and-screenshots' set up to track remote branch 'feat/3-gh-cli-documentation-and-screenshots' from 'origin'.
 ```
 
 ### Create a Draft Pull Request 
 
+Either create a pull request from the github web interface or command line. 
 
+| Field         | Description                                                  | Example                                                      |
+| ------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **Title**     | A short descriptive title for the pull request <br />starting with *feat*/*fix*/*rework*  etc<br /><br />tip use the same name as the branch name <br />It should give your team members a good idea what the PR will archieve. <br /> | `feat/3-gh-cli-documentation-and-screenshots`                |
+| **Body**      | Use the feature or bug template as a guide.  <br />leave the headers and clean up the boilerplate text. <br /><br />link to the issue by using the [magic words](https://docs.github.com/en/free-pro-team@latest/github/managing-your-work-on-github/linking-a-pull-request-to-an-issue) `resolves #3`<br />you can link to an issue in another repos by using the full name <br />followed by the issue number <br />`resolves PenCue/devprocess#3` |                                                              |
+| **Reviewers** | Select 1 or 2 team members to review the PR when ready.   <br />Ask the reviewers as early as possible in the process so they are aware and can follow the progress. |                                                              |
+| **Assignees** | Assign the PR to team member working on it (probably yourself) |                                                              |
+| **Labels**    | Copy labels of the issue. <br />(we will automate this when it becomes tedious) | ![type-feature-label](assets/type-feature-label.png)<br />![status-in-progress-label](assets/status-in-progress-label.png)![prio-medium-label](assets/prio-medium-label.png) |
+| **Project**   | Assign the issue to the project board of the issue (yes we will automate) | Timber                                                       |
+| Milestone     | Assign the same milestone as the issue (yes, we will automate) | *sprint 6 - are we having fun yet? :tm:*                     |
+| linked issues | Link to issue if not linked in the body text.                |                                                              |
 
-Continue to work on the feature with regular commits to track changes and make sure the automated integration tests are still passing. 
+**note** Don't forget to use the "draft pull request" button
+
+. ![github-draft-pull-request-button](assets/github-draft-pull-request-button.png)
+
+**note** you can change it to draft via the web interface later on.
+
+ ![github-pr-convert-to-draft](assets/github-pr-convert-to-draft.png)
+
+##### creating PRs using the command line 
+
+full cli version 
+
+```shell
+$ gh pr create --draft
+
+Creating draft pull request for feat/3-gh-cli-documentation-and-screenshots into dev in PenCue/devprocess
+
+? Title feat/3-gh-cli-documentation-and-screenshots
+? Body <Received>
+? What's next?  [Use arrows to move, type to filter]
+> Submit
+  Continue in browser
+  Add metadata
+  Cancel
+
+```
+
+open create a pull request in the browser: 
+
+```shell
+$ gh pr create --web
+Opening github.com/PenCue/devprocess/compare/dev...1-document-git-branching-approach in your browser.
+```
 
 ### Commit regularly
 
-### Ready for review
+Try to commit regularly at logical points in the development so the reviewers are aware of the progress. 
 
-### Review and approve
+### Mark *Ready for review*
+
+Once the feature/fix etc is ready for review mark the PR *Ready for review*. 
+
+In the web interface:
+
+![github-ready-for-review-button](assets/github-ready-for-review-button.png)
+
+Via the command line
+
+```shell
+$ gh pr ready
+✔ Pull request #2 is marked as "ready for review"
+```
+
+### Review
+
+#### Reviewee POV
+
+it is not personal ..  
+
+- [ ] be available for questions from the reviewers
+- [ ] Take a step back while the reviewers do their thing. 
+  - [ ] anything you came across you want to refactor/fix?
+    - [ ] create issues and use the priority to indicate how urgent you think it is. 
+  - [ ] does the architecture/best practices still fit the new design?
+    - [ ] raise with team.
+
+#### Reviewer POV
+
+The responsibility of the reviewer is provide a second / third pair of eyes and mind on the code.  By approving the code the reviewer shares responsibility for the developed feature/fix.  
+
+please take the time to review changes.  Use as much time as you need but as guideline we expect the review effort to be proportional to the impact of the code/change.  So rubberstamping a minor or major change is not ok. 
+
+##### Review guidelines
+
+- [ ] Review the functionality/fix
+  - [ ] Is it complete? 
+  - [ ] Was it overcomplete? 
+    - [ ] Is the extra functionality documented and communicated?
+- [ ] Review the test cases. 
+  - [ ] Do you understand what is tested? Would you do it the same way?
+  - [ ] Consider negative test cases. Are there the cases to check for error conditions. (unhappy path testing)
+  - [ ] Consider edge cases. Look at the code and check if there are boundry conditions/conditionals. are there test cases for all paths 
+  - [ ] Run the test suite, modify test cases and see if you can break stuff
+- [ ] Review the code
+  - [ ] Read the code. Do you understand what it is doing? Is there any magic? 
+    - [ ] Do you think it is understandable in 3 months? 1 year?
+  - [ ] Is the naming of classes/objects/parameters/variables consistent with the rest of the code base?
+  - [ ] Is the behaviour of methods/functions consistent?  Are errors handled consistently? 
+  - [ ] How is the documentation?  Are all parameters, returns and sideeffects clearly documented. 
+- [ ] Review the design
+  - [ ] Is the design line with the architecture / agreed best practices  
+  - [ ] is the architecture well defined for this case? 
+  - [ ] Are there architectural changes/decisions made?
+    - [ ] have they been recorded in a architectural decision record (_adr)
+    - [ ] Is there consensus by the team. 
+- [ ] Review nonfunctionals
+  - [ ] Performance impact?
+    - [ ] guestimate of more/less 
+  - [ ] Cost impact? 
+    - [ ] more or less? 
+  - [ ] Do the changes warrant an security review ?
+    - [ ] any new interfaces added? 
+
+These are only guidelines. Use your expertise and experience to focus your effort.  
+
+Note: 
+
+- It is ok to comment or request changes.  
+  - make it helpful and respectful.
+  - be clear and concise
+  - explain why and if possible where and how. 
+  - Feel free to offer an solution/assistance. 
+- Don't approve the changes if you didn't have time to review
+- Don't approve the changes if you don't understand changes. 
+
+### Approval 
+
+At least one reviewer needs to approve the PR before it can get merged into the main branch.  If there are commits after the approval the PR needs to be reviewed again. 
 
 ### Merge and delete
 
+After the approval the PR can be merged and the feature branch deleted. 
 
 
 ## References 
