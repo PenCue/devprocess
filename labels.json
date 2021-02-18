@@ -148,5 +148,65 @@
 			"blocked"
 		],
 		"description": "Issue needs to be worked on but blocked"
-	}
+	},
+	{
+		"name": "status: 🎉 Completed", 
+		"color": "1E312A",
+		"aliases": [
+			"blocked"
+		],
+		"description": "Issue Done and Dusted"
+	},
+	{
+		"name": "Release Alpha 0️⃣",
+		"color": "ff0a54",
+		"description": "Make Frank Happy"
+	  },
+	  {
+		"name": "Release Beta 1️⃣",
+		"color": "ff477e",
+		"description": "Make Hein Happy"
+	  },
+	  {
+		"name": "Release Gamma 2️⃣",
+		"color": "ff5c8a",
+		"description": ""
+	  },
+	  {
+		"name": "Release Delta 3️⃣",
+		"color": "ff7096",
+		"description": ""
+	  },
+	  {
+		"name": "Release Epsilon 4️⃣",
+		"color": "ff85a1",
+		"description": ""
+	  },
+	  {
+		"name": "Release Zeta 5️⃣",
+		"color": "ff99ac",
+		"description": ""
+	  },
+	  {
+		"name": "Release Eta 6️⃣",
+		"color": "fbb1bd",
+		"description": ""
+	  },
+	  {
+		"name": "Release Theta 7️⃣",
+		"color": "f9bec7",
+		"description": ""
+	  },
+	  {
+		"name": "Release Iota 8️⃣",
+		"color": "f7cad0",
+		"description": ""
+	  },
+	  {
+		"name": "Release Kappa 9️⃣",
+		"color": "fae0e4",
+		"description": ""
+	  }
+
+
 ]
