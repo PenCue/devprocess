@@ -30,7 +30,7 @@ https://coolors.co/54478c-2c699a-048ba8-0db39e-16db93-83e377-b9e769-efea5a-f1c45
 d8f3dc,b7e4c7,95d5b2,74c69d,52b788,40916c,2d6a4f,1b4332,081c15
 
 /* Array */
-["d8f3dc","b7e4c7","95d5b2","74c69d","52b788","40916c","2d6a4f","1b4332","081c15"]
+["d8f3dc","b7e4c7","95d5b2","74c69d","52b788","40916c","2d6a4f","1b4332","081c15","1E312A"]
 
 /* Object */
 {"Nyanza":"d8f3dc","Turquoise Green":"b7e4c7","Turquoise Green 2":"95d5b2","Ocean Green":"74c69d","Ocean Green 2":"52b788","Illuminating Emerald":"40916c","Bottle Green":"2d6a4f","Brunswick Green":"1b4332","Dark Jungle Green":"081c15"}
@@ -39,3 +39,18 @@ d8f3dc,b7e4c7,95d5b2,74c69d,52b788,40916c,2d6a4f,1b4332,081c15
 [{"name":"Nyanza","hex":"d8f3dc","rgb":[216,243,220],"cmyk":[11,0,9,5],"hsb":[129,11,95],"hsl":[129,53,90],"lab":[93,-13,8]},{"name":"Turquoise Green","hex":"b7e4c7","rgb":[183,228,199],"cmyk":[20,0,13,11],"hsb":[141,20,89],"hsl":[141,45,81],"lab":[87,-20,9]},{"name":"Turquoise Green","hex":"95d5b2","rgb":[149,213,178],"cmyk":[30,0,16,16],"hsb":[147,30,84],"hsl":[147,43,71],"lab":[80,-28,11]},{"name":"Ocean Green","hex":"74c69d","rgb":[116,198,157],"cmyk":[41,0,21,22],"hsb":[150,41,78],"hsl":[150,42,62],"lab":[74,-34,13]},{"name":"Ocean Green","hex":"52b788","rgb":[82,183,136],"cmyk":[55,0,26,28],"hsb":[152,55,72],"hsl":[152,41,52],"lab":[68,-41,15]},{"name":"Illuminating Emerald","hex":"40916c","rgb":[64,145,108],"cmyk":[56,0,26,43],"hsb":[153,56,57],"hsl":[153,39,41],"lab":[54,-34,12]},{"name":"Bottle Green","hex":"2d6a4f","rgb":[45,106,79],"cmyk":[58,0,25,58],"hsb":[153,58,42],"hsl":[153,40,30],"lab":[40,-27,9]},{"name":"Brunswick Green","hex":"1b4332","rgb":[27,67,50],"cmyk":[60,0,25,74],"hsb":[154,60,26],"hsl":[155,43,18],"lab":[25,-19,6]},{"name":"Dark Jungle Green","hex":"081c15","rgb":[8,28,21],"cmyk":[71,0,25,89],"hsb":[159,71,11],"hsl":[159,56,7],"lab":[8,-10,2]}]
 
 https://coolors.co/d8f3dc-b7e4c7-95d5b2-74c69d-52b788-40916c-2d6a4f-1b4332-081c15
+
+
+/* CSV */
+ff0a54,ff477e,ff5c8a,ff7096,ff85a1,ff99ac,fbb1bd,f9bec7,f7cad0,fae0e4
+
+/* Array */
+["ff0a54","ff477e","ff5c8a","ff7096","ff85a1","ff99ac","fbb1bd","f9bec7","f7cad0","fae0e4"]
+
+/* Object */
+{"Red Crayola":"ff0a54","French Rose":"ff477e","Brink Pink":"ff5c8a","French Pink":"ff7096","Pink Sherbet":"ff85a1","Salmon Pink":"ff99ac","Light Pink":"fbb1bd","Pink":"f9bec7","Baby Pink":"f7cad0","Piggy Pink":"fae0e4"}
+
+/* Extended Array */
+[{"name":"Red Crayola","hex":"ff0a54","rgb":[255,10,84],"cmyk":[0,96,67,0],"hsb":[342,96,100],"hsl":[342,100,52],"lab":[54,81,30]},{"name":"French Rose","hex":"ff477e","rgb":[255,71,126],"cmyk":[0,72,51,0],"hsb":[342,72,100],"hsl":[342,100,64],"lab":[59,72,11]},{"name":"Brink Pink","hex":"ff5c8a","rgb":[255,92,138],"cmyk":[0,64,46,0],"hsb":[343,64,100],"hsl":[343,100,68],"lab":[62,65,9]},{"name":"French Pink","hex":"ff7096","rgb":[255,112,150],"cmyk":[0,56,41,0],"hsb":[344,56,100],"hsl":[344,100,72],"lab":[66,58,7]},{"name":"Pink Sherbet","hex":"ff85a1","rgb":[255,133,161],"cmyk":[0,48,37,0],"hsb":[346,48,100],"hsl":[346,100,76],"lab":[70,49,7]},{"name":"Salmon Pink","hex":"ff99ac","rgb":[255,153,172],"cmyk":[0,40,33,0],"hsb":[349,40,100],"hsl":[349,100,80],"lab":[74,40,7]},{"name":"Light Pink","hex":"fbb1bd","rgb":[251,177,189],"cmyk":[0,29,25,2],"hsb":[350,29,98],"hsl":[350,90,84],"lab":[79,29,5]},{"name":"Pink","hex":"f9bec7","rgb":[249,190,199],"cmyk":[0,24,20,2],"hsb":[351,24,98],"hsl":[351,83,86],"lab":[82,22,4]},{"name":"Baby Pink","hex":"f7cad0","rgb":[247,202,208],"cmyk":[0,18,16,3],"hsb":[352,18,97],"hsl":[352,74,88],"lab":[85,17,3]},{"name":"Piggy Pink","hex":"fae0e4","rgb":[250,224,228],"cmyk":[0,10,9,2],"hsb":[351,10,98],"hsl":[351,72,93],"lab":[91,10,1]}]
+
+https://coolors.co/ff0a54-ff477e-ff5c8a-ff7096-ff85a1-ff99ac-fbb1bd-f9bec7-f7cad0-fae0e4
