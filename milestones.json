@@ -58,69 +58,134 @@
   },
   {
     "title": "Sprint 10",
-    "state": "open",
+    "state": "closed",
     "description": "PenCue X",
     "due_on": "2021-02-22T23:59:59Z"
   },
   {
     "title": "Sprint 11",
-    "state": "open",
+    "state": "closed",
     "description": "",
     "due_on": "2021-03-08T23:59:59Z"
   },
   {
     "title": "Sprint 12",
-    "state": "open",
+    "state": "closed",
     "description": "",
     "due_on": "2021-03-22T23:59:59Z"
   },
   {
     "title": "Sprint 13",
-    "state": "open",
+    "state": "closed",
     "description": "",
     "due_on": "2021-04-05T23:59:59Z"
   },
   {
     "title": "Sprint 14",
-    "state": "open",
+    "state": "closed",
     "description": "",
     "due_on": "2021-04-19T23:59:59Z"
   },
   {
     "title": "Sprint 15",
-    "state": "open",
+    "state": "closed",
     "description": "",
     "due_on": "2021-05-03T23:59:59Z"
   },
   {
     "title": "Sprint 16",
-    "state": "open",
+    "state": "closed",
     "description": "",
     "due_on": "2021-05-17T23:59:59Z"
   },
   {
     "title": "Sprint 17",
-    "state": "open",
-    "description": "",
-    "due_on": "2021-05-31T23:59:59Z"
+    "state": "closed",
+    "description": "Today is a good day for information-gathering.  Read someone else's mail file.\n",
+    "due_on": "2021-05-31T23:59:59"
   },
   {
     "title": "Sprint 18",
     "state": "open",
-    "description": "",
-    "due_on": "2021-06-14T23:59:59Z"
+    "description": "C Code.\nC Code Run.\nRun, Code, RUN!\n\tPLEASE!!!!\n",
+    "due_on": "2021-06-14T23:59:59"
   },
   {
     "title": "Sprint 19",
     "state": "open",
-    "description": "",
-    "due_on": "2021-06-28T23:59:59Z"
+    "description": "Can't open /usr/fortunes.  Lid stuck on cookie jar.\n",
+    "due_on": "2021-06-28T23:59:59"
   },
   {
     "title": "Sprint 20",
     "state": "open",
-    "description": "Superbowl XX",
-    "due_on": "2021-07-12T23:59:59Z"
-  }
-]
+    "description": "%DCL-MEM-BAD, bad memory\nVMS-F-PDGERS, pudding between the ears\n",
+    "due_on": "2021-07-12T23:59:59"
+  },
+  {
+    "title": "Sprint 21",
+    "state": "open",
+    "description": "A bug in the code is worth two in the documentation.\n",
+    "due_on": "2021-07-26T23:59:59"
+  },
+  {
+    "title": "Sprint 22",
+    "state": "open",
+    "description": "System going down at 1:45 this afternoon for disk crashing.\n",
+    "due_on": "2021-08-09T23:59:59"
+  },
+  {
+    "title": "Sprint 23",
+    "state": "open",
+    "description": "The trouble with computers is that they do what you tell them, not what\nyou want.\n\t\t-- D. Cohen\n",
+    "due_on": "2021-08-23T23:59:59"
+  },
+  {
+    "title": "Sprint 24",
+    "state": "open",
+    "description": "This login session: $13.76, but for you $11.88.\n",
+    "due_on": "2021-09-06T23:59:59"
+  },
+  {
+    "title": "Sprint 25",
+    "state": "open",
+    "description": "Loose bits sink chips.\n",
+    "due_on": "2021-09-20T23:59:59"
+  },
+  {
+    "title": "Sprint 26",
+    "state": "open",
+    "description": "Computers are useless.  They can only give you answers.\n\t\t-- Pablo Picasso\n",
+    "due_on": "2021-10-04T23:59:59"
+  },
+  {
+    "title": "Sprint 27",
+    "state": "open",
+    "description": "\"Text processing has made it possible to right-justify any idea, even\none which cannot be justified on any other grounds.\"\n\t\t-- J. Finnegan, USC.\n",
+    "due_on": "2021-10-18T23:59:59"
+  },
+  {
+    "title": "Sprint 28",
+    "state": "open",
+    "description": "ASHes to ASHes, DOS to DOS.\n",
+    "due_on": "2021-11-01T23:59:59"
+  },
+  {
+    "title": "Sprint 29",
+    "state": "open",
+    "description": "System going down at 1:45 this afternoon for disk crashing.\n",
+    "due_on": "2021-11-15T23:59:59"
+  },
+  {
+    "title": "Sprint 30",
+    "state": "open",
+    "description": "Trap full -- please empty.\n",
+    "due_on": "2021-11-29T23:59:59"
+  },
+  {
+    "title": "Sprint 31",
+    "state": "open",
+    "description": "A language that doesn't affect the way you think about programming is\nnot worth knowing.\n",
+    "due_on": "2021-12-13T23:59:59"
+  }]
 }]

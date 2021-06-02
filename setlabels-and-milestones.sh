@@ -50,7 +50,7 @@ log_warn "QUICK_HACK_SCRIPT to set labels and milestones for a given repo"
 log_warn "NOTE very limited error checking.  use only if you understand the script"
 log_warn "This script will DELETE existing labels and milestones"
 
-$($GITHUB_SYNC_LABELS_MILESTONES -V &>2) 
+$($GITHUB_SYNC_LABELS_MILESTONES -V >/dev/null) 
 if [[ $? -ne 0 ]] ;then
     log_error "external prog $GITHUB_SYNC_LABELS_MILESTONES is missing"
     log_info "install via npm install -g github-sync-labels-milestones"
@@ -77,15 +77,16 @@ if [[ ! -r "${MILESTONESFILE}" || ! -r "${LABELSFILE}" ]] ; then
     log_error "Can't read $MILESTONESFILE or $LABELSFILE in $PWD" 
     exit 3
 fi
-
+#set -x
 TMPDIR=$(mktemp -d /tmp/${PROGNAME}.XXXXXX)
 TMPFILE="${TMPDIR}/milestones.json"
 jq -c ".[0].repositories[0] = \"$REPO\"" $MILESTONESFILE >$TMPFILE
 # this little call stack is to make sure that tmpfile is deleted. (could have been done a lot smarter (tm))
-# cat $TMPFILE
+#cat $TMPFILE
+#set +x
 if [[ $? -eq 0 ]] ; then
     log_info "setting milestones for $REPO"
-    $NOP github-sync-labels-milestones -v -t $GITHUB_ACCESSTOKEN -c $TMPFILE -v
+    $NOP github-sync-labels-milestones -t $GITHUB_ACCESSTOKEN -c $TMPFILE 
     
     if [[ $? -eq 0 ]] ; then 
         log_info "successfully finished setting milestones"
@@ -102,5 +103,5 @@ if [[ $? -eq 0 ]] ; then
 else
     log_error "update of temp milestones file $TMPFILE failed"
 fi 
-rm "$TMPFILE"
-rmdir "$TMPDIR"
+#rm "$TMPFILE"
+#rmdir "$TMPDIR"
