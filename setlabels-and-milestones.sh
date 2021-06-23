@@ -8,8 +8,6 @@ MILESTONESFILE="milestones.json"
 LABELSFILE="labels.json"
 REPO=${1-}
 GITHUB_ACCESSTOKEN=${GITHUB_ACCESSTOKEN-}
-GITHUB_LABEL_SYNC=github-label-sync
-GITHUB_SYNC_LABELS_MILESTONES=github-sync-labels-milestones
 # default TERM to xterm-256color to
 TERM=${TERM-"xterm-256color"}
 export TERM
@@ -50,16 +48,9 @@ log_warn "QUICK_HACK_SCRIPT to set labels and milestones for a given repo"
 log_warn "NOTE very limited error checking.  use only if you understand the script"
 log_warn "This script will DELETE existing labels and milestones"
 
-$($GITHUB_SYNC_LABELS_MILESTONES -V &>2) 
+npx -v
 if [[ $? -ne 0 ]] ;then
-    log_error "external prog $GITHUB_SYNC_LABELS_MILESTONES is missing"
-    log_info "install via npm install -g github-sync-labels-milestones"
-    exit 3
-fi 
-$($GITHUB_LABEL_SYNC -V &>2) 
-if [[ $? -ne 0 ]] ;then
-    log_error "external prog $GITHUB_LABEL_SYNC is missing"
-    log_info "install via npm install -g github-label-sync"
+    log_error "external prog npx is missing"
     exit 3
 fi 
 
@@ -85,12 +76,12 @@ jq -c ".[0].repositories[0] = \"$REPO\"" $MILESTONESFILE >$TMPFILE
 # cat $TMPFILE
 if [[ $? -eq 0 ]] ; then
     log_info "setting milestones for $REPO"
-    $NOP github-sync-labels-milestones -v -t $GITHUB_ACCESSTOKEN -c $TMPFILE -v
+    npx -p github-sync-labels-milestones -c "github-sync-labels-milestones -v -t $GITHUB_ACCESSTOKEN -c $TMPFILE -v"
     
     if [[ $? -eq 0 ]] ; then 
         log_info "successfully finished setting milestones"
         log_info "setting labels for $REPO"    
-        $NOP github-label-sync -a $GITHUB_ACCESSTOKEN -l ./labels.json $REPO
+        npx -p github-label-sync -c "github-label-sync -a $GITHUB_ACCESSTOKEN -l ./labels.json $REPO"
         if [[ $? -eq 0 ]] ; then 
             log_info "successfully finished setting milestones"
         else 
