@@ -7,4 +7,7 @@
 ./setlabels-and-milestones.sh PenCue/timber_docs
 ./setlabels-and-milestones.sh PenCue/bucksaw
 ./setlabels-and-milestones.sh PenCue/chainsaw
-./setlabels-and-milestones.sh PenCue/timber_eventgrid
+./setlabels-and-milestones.sh PenCue/timber_infra
+./setlabels-and-milestones.sh PenCue/timber_admin_object
+./setlabels-and-milestones.sh PenCue/timber_lib
+
