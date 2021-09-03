@@ -112,31 +112,31 @@
   },
   {
     "title": "Sprint 19",
-    "state": "open",
+    "state": "closed",
     "description": "Can't open /usr/fortunes.  Lid stuck on cookie jar.\n",
     "due_on": "2021-06-28T23:59:59"
   },
   {
     "title": "Sprint 20",
-    "state": "open",
+    "state": "closed",
     "description": "%DCL-MEM-BAD, bad memory\nVMS-F-PDGERS, pudding between the ears\n",
     "due_on": "2021-07-12T23:59:59"
   },
   {
     "title": "Sprint 21",
-    "state": "open",
+    "state": "closed",
     "description": "A bug in the code is worth two in the documentation.\n",
     "due_on": "2021-07-26T23:59:59"
   },
   {
     "title": "Sprint 22",
-    "state": "open",
+    "state": "closed",
     "description": "System going down at 1:45 this afternoon for disk crashing.\n",
     "due_on": "2021-08-09T23:59:59"
   },
   {
     "title": "Sprint 23",
-    "state": "open",
+    "state": "closed",
     "description": "The trouble with computers is that they do what you tell them, not what\nyou want.\n\t\t-- D. Cohen\n",
     "due_on": "2021-08-23T23:59:59"
   },
