@@ -18,3 +18,4 @@
 ./setlabels-and-milestones.sh PenCue/timber_release
 ./setlabels-and-milestones.sh PenCue/timber_search_indexer
 ./setlabels-and-milestones.sh PenCue/timber_test
+./setlabels-and-milestones.sh PenCue/timber_analytics_factory
